@@ -1,8 +1,6 @@
 (ns clj-mindustry.world.blocks.production
   (:require
-   [camel-snake-kebab.core :as csk]
-   [clj-mindustry.content.fx :as content.fx]
-   [clj-mindustry.type.item-stack :as type.item-stack])
+   [camel-snake-kebab.core :as csk])
   (:import
    (mindustry.content
     Items)
