@@ -1,0 +1,9 @@
+name: "clj-mod"
+displayName: "Clojure Mod"
+author: "uochan"
+description: "FIXME"
+version: "0.1.0"
+minGameVersion: "136"
+main: "com.github.liquidz.mindustry.ClojureMod"
+dependencies: []
+hidden: false

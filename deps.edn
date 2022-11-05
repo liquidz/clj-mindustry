@@ -1,0 +1,15 @@
+{:mvn/repos {"jitpack" {:url "https://jitpack.io"}}
+ :paths ["src" "resources" "target/classes"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.3"}
+        ;; provided
+        ;; cf. https://github.com/clojure/tools.build/blob/793278edecba30e7c963c7c0a3958c6185126a30/src/main/clojure/clojure/tools/build/tasks/uber.clj#L184
+        com.github.Anuken.Mindustry/core {:optional true :mvn/version "v138"}
+        com.github.Anuken.Arc/g3d {:optional true :mvn/version "v138"}
+        com.github.Anuken.Arc/flabel {:optional true :mvn/version "v138"}
+        com.github.Anuken.Arc/arc-core {:optional true :mvn/version "v138"}}
+ :aliases
+ {:build {:deps {com.github.liquidz/build.edn
+                 ;; {:git/tag "0.8.162" :git/sha "799b47e"}
+                 {:local/root "/Users/iizukamasashi/src/github.com/liquidz/build.edn"}}
+          :ns-default build-edn.main}}}

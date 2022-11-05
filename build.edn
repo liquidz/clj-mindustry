@@ -1,0 +1,6 @@
+{:lib com.github.liquidz/clj-mindustry-mod
+ :version "0.1.{{git/commit-count}}"
+ ;; :uber-file "foobar"
+ :java-source-dirs ["src-java"]
+ :javac-opts ["-source" "8" "-target" "8" "-Xlint:-options"]
+ :main nil}
