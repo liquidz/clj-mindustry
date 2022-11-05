@@ -10,4 +10,4 @@
 
 (defn -loadContent
   []
-  (content.block/new-wani-press5))
+  (content.block/wani-press))

@@ -5,7 +5,7 @@ import mindustry.mod.Mod;
 
 // https://sparkofreason.github.io/jvm-clojure-google-cloud-function/
 public class ClojureMod extends Mod {
-    public static final String core = ClojureMod.class.getPackageName() + ".core";
+    public static final String core = "clj-mindustry.core";
     static {
         Thread.currentThread().setContextClassLoader(ClojureMod.class.getClassLoader());
         Clojure.var("clojure.core", "require").invoke(Clojure.read(core));

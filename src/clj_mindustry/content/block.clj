@@ -1,44 +1,34 @@
 (ns clj-mindustry.content.block
   (:require
-    [camel-snake-kebab.core :as csk]
-    [clj-mindustry.constant.fx :as const.fx]
-    [clj-mindustry.type.item-stack :as type.item-stack])
+   [clj-mindustry.type.item-stack :as item-stack]
+   [clj-mindustry.world.blocks.production :as blocks])
   (:import
-    (mindustry.content
-      Items)
-    (mindustry.type
-      Category
-      ItemStack)))
+   arc.graphics.Color
+   (mindustry.content
+    Fx
+    Items)
+   mindustry.type.Category
+   (mindustry.world.draw
+    DrawBlock
+    DrawDefault
+    DrawFlame
+    DrawMulti)))
 
-(defmacro def-generic-crafter
-  [{package :package crafter-name :name}]
-  (let [prefix (gensym crafter-name)
-        class-name (symbol (format "%s.%s" package (csk/->PascalCase prefix)))
-        post-init (symbol (str prefix "post-init"))]
-    `(do (defn ~post-init
-           [this# _#]
-           (set! (.-craftEffect this#) const.fx/pulverize-medium)
-           (set! (.-outputItem this#) (ItemStack. Items/graphite 1))
-           (set! (.-craftTime this#) 90)
-           (set! (.-size this#) 2)
-           (set! (.-hasItems this#) true)
-           (.requirements this#
-                          Category/crafting
-                          (type.item-stack/with Items/copper 4 Items/lead 9))
-           (.consumeItem this# Items/coal (int 2)))
-         (gen-class
-           :name ~(str class-name)
-           :extends mindustry.world.blocks.production.GenericCrafter
-           :post-init "post-init"
-           :prefix ~(str prefix)
-           :main false)
-
-         (defn ~(symbol (str "new-" crafter-name))
-           []
-           (new ~class-name ~(str crafter-name))))))
-
-(def-generic-crafter
-  {:package clj-mindustry.content.block
-   :name wani-press5})
+(blocks/def-generic-crafter
+ wani-press
+ {:craft-effect Fx/pulverizeMedium
+  :output-item (item-stack/stack Items/graphite 1)
+  :craft-time 90
+  :size 2
+  :has-items true
+  ;; :drawer (DrawMulti. (into-array DrawBlock [(DrawDefault.)
+  ;;                                            (DrawFlame. (Color/valueOf "ffc099"))]))
+  :requirements {:category Category/crafting
+                 :stacks (item-stack/with
+                          Items/copper 3
+                          Items/lead 8)}
+  :consume-items {:stack (item-stack/with Items/coal 1 Items/sand 1)}})
+  ;; :consume-item {:item items/coal
+  ;;                :amount 5}})
 
 (comment (compile 'crescendo.content.block))

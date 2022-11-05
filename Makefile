@@ -8,7 +8,7 @@ build: clean
 
 .PHONY: install
 install: clean build
-	cp -pf target/foobar.jar /Users/iizukamasashi/Library/Application\ Support/Mindustry/mods
+	cp -pf target/clj-mindustry.jar /Users/iizukamasashi/Library/Application\ Support/Mindustry/mods
 
 .PHONY: clean
 clean:
