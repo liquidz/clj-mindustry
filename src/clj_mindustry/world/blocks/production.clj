@@ -2,8 +2,7 @@
   (:require
    [camel-snake-kebab.core :as csk])
   (:import
-   (mindustry.content
-    Items)
+   mindustry.content.Items
    (mindustry.type
     Category
     ItemStack)))
@@ -39,8 +38,8 @@
               `(set! (.-hasLiquids ~this) ~has-liquids))
            ~(when has-power
               `(set! (.-hasPower ~this) ~has-power))
-           ~(when-let [{:keys [category stacks]} requirements]
-              `(.requirements ~this ~category ~stacks))
+           ~(when-let [{:keys [stacks]} requirements]
+              `(.requirements ~this Category/crafting ~stacks))
            ~(when-let [{:keys [item amount]} consume-item]
               `(.consumeItem ~this ~item ~amount))
            ~(when-let [{:keys [stack]} consume-items]

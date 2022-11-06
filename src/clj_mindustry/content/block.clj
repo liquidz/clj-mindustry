@@ -23,8 +23,7 @@
   :has-items true
   ;; :drawer (DrawMulti. (into-array DrawBlock [(DrawDefault.)
   ;;                                            (DrawFlame. (Color/valueOf "ffc099"))]))
-  :requirements {:category Category/crafting
-                 :stacks (item-stack/with
+  :requirements {:stacks (item-stack/with
                           Items/copper 3
                           Items/lead 8)}
   :consume-items {:stack (item-stack/with Items/coal 1 Items/sand 1)}})
