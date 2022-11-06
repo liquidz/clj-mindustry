@@ -31,4 +31,4 @@
  example-conveyor
  {:speed 0.5
   :displayed-speed 11
-  :requirements {:stacks (item-stack/with Items/sand 100)}})
+  :requirements {:stacks (item-stack/with Items/copper 1)}})
