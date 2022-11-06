@@ -10,4 +10,5 @@
 
 (defn -loadContent
   []
-  (content.block/wani-press))
+  (content.block/wani-press)
+  (content.block/wani-conveyor))
